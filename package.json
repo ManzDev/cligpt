@@ -1,8 +1,11 @@
 {
   "name": "@manzdev/cligpt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Command-line tool that utilizes the GPT (Generative Pre-trained Transformer) language model to return Linux commands that perform the specified action in natural language.",
   "main": "index.mjs",
+  "bin": {
+    "cligpt": "./index.mjs"
+  },
   "scripts": {
     "dev": "node index.mjs"
   },
