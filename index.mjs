@@ -1,15 +1,19 @@
 #!/usr/bin/env node
 
+import { env } from "./loadEnvFile.mjs";
 import { argv, exit } from "node:process";
 import { styleText } from "./color.mjs";
 import { askGPT } from "./askGPT.mjs";
+import { askLlama } from "./askLlama.mjs";
 
 const request = argv.slice(2).join(" ");
+const ask = env.CLIGPT_IA === "OPENAI" ? askGPT : askLlama;
+const options = env.CLIGPT_IA === "OLLAMA" ? { ip: env.OLLAMA_IP } : {};
 
 export const getCommandCli = async (request) => {
   const cleanRequest = request.replace(/"/g, '\\"');
   const prompt = `Dame un comando de terminal de GNU/Linux que haga lo siguiente: \"${cleanRequest}\". Devuélveme sólo el comando, sin explicaciones añadidas.`;
-  const { response } = await askGPT(prompt);
+  const { response } = await ask(prompt, options);
   return response;
 };
 

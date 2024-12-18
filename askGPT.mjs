@@ -1,16 +1,8 @@
-import { loadEnvFile } from "./loadEnvFile.mjs";
-import { env, exit } from "node:process";
+import { env } from "./loadEnvFile.mjs";
+import { exit } from "node:process";
 import { styleText } from "./color.mjs";
-import { homedir } from "node:os";
 
-const ENVFILE_PATH = homedir() + "/.env";
-const OPENAI_KEY = loadEnvFile(ENVFILE_PATH);
-
-if (OPENAI_KEY) {
-  env.OPENAI_KEY = OPENAI_KEY;
-}
-
-if (!env.OPENAI_KEY) {
+if (env.CLIGPT === "OPENAI" && !env.OPENAI_KEY) {
   console.error(`Necesitas un fichero ${styleText("magenta", "~/.env")} con tu key de OpenAI: ${styleText("cyan", "OPENAI_KEY=____")}. Puedes creartela aquí: https://platform.openai.com/api-keys`);
   exit(-1);
 }

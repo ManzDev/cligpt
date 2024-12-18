@@ -1,17 +1,15 @@
+import { homedir } from "node:os";
 import { readFileSync } from "node:fs";
-import { env } from "node:process";
+
+const ENVFILE_PATH = homedir() + "/.env";
 
 export const loadEnvFile = (filepath) => {
   const data = readFileSync(filepath, { encoding: "utf8" });
   const lines = data.split("\n");
   const envVars = {};
 
-  const OPENAI_KEY = lines.map(line => {
-    const [key, value] = line.split("=");
-    return { key, value };
-  })
-    .filter(({ key, value }) => key)
-    .find(({ key, value }) => key === "OPENAI_KEY");
-
-  return OPENAI_KEY?.value || "";
+  const entries = lines.filter(item => item).map(line => line.split("="));
+  return Object.fromEntries(entries);
 }
+
+export const env = loadEnvFile(ENVFILE_PATH);

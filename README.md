@@ -14,7 +14,15 @@ Esto instalará `cligpt` globalmente en tu sistema, lo que te permitirá acceder
 
 ## Configuración ⚙️
 
-Para utilizar `cligpt` necesitas una [key de OpenAI](https://platform.openai.com/api-keys). Es un servicio de pago, pero el coste es muy reducido, práctico y cómodo.
+Puedes utilizar `cligpt` de dos formas:
+
+- Con OpenAI:
+
+Necesitas una [key de OpenAI](https://platform.openai.com/api-keys). Es un servicio de pago, pero el coste es muy reducido, práctico y cómodo.
+
+- Con Ollama:
+
+Necesitas una tarjeta gráfica potente y tener instalado [Ollama](https://ollama.com/).
 
 Necesitarás crear un fichero `~/.env`, es decir, en tu carpeta raíz de usuario. Dicho fichero, debe tener la key de OpenAI en este formato:
 
