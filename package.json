@@ -7,10 +7,19 @@
     "cligpt": "./index.mjs"
   },
   "scripts": {
-    "dev": "node index.mjs"
+    "dev": "node --env-file=.env index.mjs"
   },
-  "keywords": ["gpt", "cli", "command-line", "linux"],
+  "keywords": [
+    "gpt",
+    "cli",
+    "command-line",
+    "linux"
+  ],
   "homepage": "https://manz.dev/",
   "author": "ManzDev",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@google/generative-ai": "^0.16.0",
+    "ollama": "^0.5.6"
+  }
 }

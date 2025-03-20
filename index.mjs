@@ -2,14 +2,16 @@
 
 import { argv, exit } from "node:process";
 import { styleText } from "./color.mjs";
-import { askGPT } from "./askGPT.mjs";
+// import { askGPT } from "./askGPT.mjs";
+import { askOllama } from "./askOllama.mjs"
+// import { askGemini } from './gemini.mjs';
 
 const request = argv.slice(2).join(" ");
 
 export const getCommandCli = async (request) => {
   const cleanRequest = request.replace(/"/g, '\\"');
   const prompt = `Dame un comando de terminal de GNU/Linux que haga lo siguiente: \"${cleanRequest}\". Devuélveme sólo el comando, sin explicaciones añadidas.`;
-  const { response } = await askGPT(prompt);
+  const { response } = await askOllama(prompt);
   return response;
 };
 
